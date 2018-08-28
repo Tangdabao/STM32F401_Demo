@@ -40,14 +40,14 @@
 /* Includes ------------------------------------------------------------------*/
 #include "gpio.h"
 /* USER CODE BEGIN 0 */
-
+#include "usart.h"
 /* USER CODE END 0 */
 
 /*----------------------------------------------------------------------------*/
 /* Configure GPIO                                                             */
 /*----------------------------------------------------------------------------*/
 /* USER CODE BEGIN 1 */
-
+extern uint8_t Updata_flag;
 /* USER CODE END 1 */
 
 /** Configure pins as 
@@ -100,12 +100,16 @@ void MX_GPIO_Init(void)
 /* USER CODE BEGIN 2 */
  void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {	
-	switch(GPIO_Pin)
-  {
-	  case GPIO_PIN_0 :;
-		case GPIO_PIN_1 :;
-	  default: ;
-	}
+	if(GPIO_Pin == INT1_Pin)
+ {
+   printf("This is LIS2DH12 Demo  INT1_Pin \r\n");
+	 Updata_flag = 1;
+ }
+	if(GPIO_Pin == INT2_Pin)
+ {
+   printf("This is LIS2DH12 Demo  INT2_Pin \r\n");
+	 Updata_flag = 1;
+ }
 }
 /* USER CODE END 2 */
 

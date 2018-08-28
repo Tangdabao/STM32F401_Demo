@@ -17,6 +17,16 @@
  * @}
  */
  
+/** @addtogroup LIS2DH12_ACC_INT Accelero 
+ * @{
+ */
+
+#define LIS2DH12_ACC_INT1  0x01
+#define LIS2DH12_ACC_INT2  0x02
+
+/**
+ * @}
+ */
 typedef struct
 {
   int32_t AXIS_X;
@@ -28,4 +38,5 @@ typedef struct
 status_t LIS2DH12_Detection(void *handle);
 void init_LIS2DH12_ACC(void *handle);
 status_t LIS2DH12_X_Get_Axes( void *handle, SensorAxes_t *acceleration );
+void init_LIS2DH12_ACC_Threshold(void *handle, u8_t ths ,u8_t Int_Pin);
 #endif

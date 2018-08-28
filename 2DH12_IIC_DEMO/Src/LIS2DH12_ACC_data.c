@@ -47,12 +47,70 @@ void init_LIS2DH12_ACC(void *handle)
     test_lis2dh12_xl.t_enable = 1 ;
 
 }
+	/*
+	1 LSb = 16 mg @ FS = ¡À2 g
+	1 LSb = 32 mg @ FS = ¡À4 g
+	1 LSb = 62 mg @ FS = ¡À8 g
+	1 LSb = 186 mg @ FS = ¡À16 g
+	*/
+void init_LIS2DH12_ACC_Threshold(void *handle, u8_t ths ,u8_t Int_Pin)
+{
+   response = MEMS_SUCCESS;
+  if (Int_Pin == LIS2DH12_ACC_INT1 )
+  {
+
+	  response = LIS2DH12_HPFAOI1Enable(handle,MEMS_DISABLE);
+	  if(response == MEMS_ERROR) while(1);
+		response = LIS2DH12_SetInt1Configuration(handle,
+																						 LIS2DH12_INT1_ZHIE_ENABLE|LIS2DH12_INT1_ZLIE_ENABLE|
+																					   LIS2DH12_INT1_YHIE_ENABLE|LIS2DH12_INT1_YLIE_ENABLE|
+																					   LIS2DH12_INT1_XHIE_ENABLE|LIS2DH12_INT1_XLIE_ENABLE);
+		if(response == MEMS_ERROR) while(1);
+		
+		response = LIS2DH12_SetInt16D4DConfiguration(handle,LIS2DH12_INT1_6D_ENABLE);
+		if(response == MEMS_ERROR) while(1);
+		
+	  response = LIS2DH12_SetInt1Mode(handle,LIS2DH12_INT_MODE_6D_POSITION);
+		if(response == MEMS_ERROR) while(1);
+		response = LIS2DH12_SetInt1Threshold(handle,ths);
+		if(response == MEMS_ERROR) while(1);
+		response = LIS2DH12_SetInt2Pin(handle,LIS2DH12_I2_INT2_ON_PIN_INT2_DISABLE);
+		if(response == MEMS_ERROR) while(1);
+		response = LIS2DH12_SetInt1Pin(handle,LIS2DH12_I1_INT1_ON_PIN_INT1_ENABLE);
+		if(response == MEMS_ERROR) while(1);
+	}
+	
+ if (Int_Pin == LIS2DH12_ACC_INT2 )
+  {
+	  response = LIS2DH12_HPFAOI2Enable(handle,MEMS_DISABLE);
+	  if(response == MEMS_ERROR) while(1);
+		response = LIS2DH12_SetInt2Configuration(handle,
+																						 LIS2DH12_INT2_ZHIE_ENABLE|LIS2DH12_INT2_ZLIE_ENABLE|
+																					   LIS2DH12_INT2_YHIE_ENABLE|LIS2DH12_INT2_YLIE_ENABLE|
+																					   LIS2DH12_INT2_XHIE_ENABLE|LIS2DH12_INT2_XLIE_ENABLE);
+		if(response == MEMS_ERROR) while(1);
+		
+		response = LIS2DH12_SetInt26D4DConfiguration(handle,LIS2DH12_INT2_6D_ENABLE);
+		if(response == MEMS_ERROR) while(1);
+		
+	  response = LIS2DH12_SetInt2Mode(handle,LIS2DH12_INT_MODE_6D_POSITION);
+		if(response == MEMS_ERROR) while(1);
+		response = LIS2DH12_SetInt2Threshold(handle,ths);
+		if(response == MEMS_ERROR) while(1);
+		response = LIS2DH12_SetInt1Pin(handle,LIS2DH12_I1_INT1_ON_PIN_INT1_DISABLE);
+		if(response == MEMS_ERROR) while(1);
+		response = LIS2DH12_SetInt2Pin(handle,LIS2DH12_I2_INT2_ON_PIN_INT2_ENABLE);
+		if(response == MEMS_ERROR) while(1);
+	}
+}
+
+
 /**
  * @brief Get the LIS2DH12 accelerometer sensor raw axes
  * @param handle the device handle
  * @param pData pointer where the raw values of the axes are written
- * @retval COMPONENT_OK in case of success
- * @retval COMPONENT_ERROR in case of failure
+ * @retval MEMS_SUCCESS in case of success
+ * @retval MEMS_ERROR in case of failure
  */
 status_t LIS2DH12_X_Get_Axes_Raw( void *handle, int16_t *pData)
 {
@@ -77,8 +135,8 @@ status_t LIS2DH12_X_Get_Axes_Raw( void *handle, int16_t *pData)
  * @brief Get the LIS2DH12 accelerometer sensor sensitivity
  * @param handle the device handle
  * @param sensitivity pointer where the sensitivity value is written
- * @retval COMPONENT_OK in case of success
- * @retval COMPONENT_ERROR in case of failure
+ * @retval MEMS_SUCCESS in case of success
+ * @retval MEMS_ERROR in case of failure
  */
 status_t LIS2DH12_X_Get_Sensitivity( void *handle, float *sensitivity )
 {
@@ -119,8 +177,8 @@ status_t LIS2DH12_X_Get_Sensitivity( void *handle, float *sensitivity )
  * @brief Get the LIS2DH12 accelerometer value
  * @param handle the device handle
  * @param Get the actual accelerometer value(Only LIS2DH12_HIGH_RES mode)
- * @retval COMPONENT_OK in case of success
- * @retval COMPONENT_ERROR in case of failure
+ * @retval MEMS_SUCCESS in case of success
+ * @retval MEMS_ERROR in case of failure
  */
 status_t LIS2DH12_X_Get_Axes( void *handle, SensorAxes_t *acceleration )
 {
