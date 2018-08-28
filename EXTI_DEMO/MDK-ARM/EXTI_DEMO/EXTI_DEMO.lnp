@@ -1,0 +1,25 @@
+--cpu=Cortex-M4.fp
+"exti_demo\stm32f4xx_hal_gpio.o"
+"exti_demo\stm32f4xx_hal.o"
+"exti_demo\stm32f4xx_hal_cortex.o"
+"exti_demo\stm32f4xx_hal_tim.o"
+"exti_demo\stm32f4xx_hal_dma_ex.o"
+"exti_demo\stm32f4xx_hal_rcc_ex.o"
+"exti_demo\stm32f4xx_hal_flash.o"
+"exti_demo\stm32f4xx_hal_dma.o"
+"exti_demo\stm32f4xx_hal_tim_ex.o"
+"exti_demo\stm32f4xx_hal_rcc.o"
+"exti_demo\stm32f4xx_hal_pwr_ex.o"
+"exti_demo\stm32f4xx_hal_flash_ramfunc.o"
+"exti_demo\stm32f4xx_hal_flash_ex.o"
+"exti_demo\stm32f4xx_hal_pwr.o"
+"exti_demo\stm32f4xx_it.o"
+"exti_demo\main.o"
+"exti_demo\stm32f4xx_hal_msp.o"
+"exti_demo\gpio.o"
+"exti_demo\system_stm32f4xx.o"
+"exti_demo\startup_stm32f401xe.o"
+--library_type=microlib --strict --scatter "EXTI_DEMO\EXTI_DEMO.sct"
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "EXTI_DEMO.map" -o EXTI_DEMO\EXTI_DEMO.axf

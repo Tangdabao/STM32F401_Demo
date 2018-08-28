@@ -1,0 +1,45 @@
+Configuration	UART_IT_DEMO
+STM32CubeMX 	4.23.0
+Date	08/24/2018
+MCU	STM32F401RETx
+
+
+
+PERIPHERALS	MODES	FUNCTIONS	PINS
+SYS	SysTick	SYS_VS_Systick	VP_SYS_VS_Systick
+USART2	Asynchronous	USART2_RX	PA3
+USART2	Asynchronous	USART2_TX	PA2
+
+
+
+Pin Nb	PINs	FUNCTIONs	LABELs
+16	PA2	USART2_TX	TX_PIN
+17	PA3	USART2_RX	RX_PIN
+
+
+
+SOFTWARE PROJECT
+
+Project Settings : 
+Project Name : UART_IT_DEMO
+Project Folder : F:\Information package and tutorial for customers\ST_MCU\STM32F401\Demo\UART_IT_DEMO
+Toolchain / IDE : MDK-ARM V5
+Firmware Package Name and Version : STM32Cube FW_F4 V1.18.0
+
+
+Code Generation Settings : 
+STM32Cube Firmware Library Package : Copy all used libraries into the project folder
+Generate peripheral initialization as a pair of '.c/.h' files per peripheral : Yes
+Backup previously generated files when re-generating : No
+Delete previously generated files when not re-generated : Yes
+Set all free pins as analog (to optimize the power consumption) : No
+
+
+Toolchains Settings : 
+Compiler Optimizations : Balanced Size/Speed
+
+
+
+
+
+
