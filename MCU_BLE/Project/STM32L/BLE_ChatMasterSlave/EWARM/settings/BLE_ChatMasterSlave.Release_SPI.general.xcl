@@ -1,0 +1,15 @@
+"D:\Software\IAR_BlueNRG\arm\bin\armproc.dll" 
+
+"D:\Software\IAR_BlueNRG\arm\bin\armstlink2.dll" 
+
+"F:\Information package and tutorial for customers\ST_MCU\STM32F401\Demo\MCU_BLE\Project\STM32L\BLE_ChatMasterSlave\EWARM\Release_SPI\Exe\BLE_ChatMasterSlave.out" 
+
+--plugin "D:\Software\IAR_BlueNRG\arm\bin\armbat.dll" 
+
+--device_macro "D:\Software\IAR_BlueNRG\arm\config\debugger\ST\STM32F4xx.dmac" 
+
+--flash_loader "D:\Software\IAR_BlueNRG\arm\config\flashloader\ST\FlashSTM32F401xE.board" 
+
+
+
+
